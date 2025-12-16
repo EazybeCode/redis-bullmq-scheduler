@@ -16,7 +16,7 @@ const getQueue = () => {
  * Message Service
  * Handles sending scheduled messages and managing recurring messages
  */
-class MessageService {
+class  MessageService {
   // File type mapping for message attachments
   static FILE_TYPE_MAP = {
     video: {
@@ -150,6 +150,8 @@ class MessageService {
   static async sendScheduledMessage(payload) {
     try {
       console.log('payload', payload);
+
+     
       
       // Check if message has a file attachment
       if (payload.scheduledFile && payload.scheduledFileName) {
@@ -159,7 +161,7 @@ class MessageService {
           chat_id: payload.recipient, // Support both field names
           scheduled_file: payload.scheduledFile,
           scheduled_file_name: payload.scheduledFileName,
-          message: payload.content || ''
+          text: payload.content || ''
         };
 
         Logger.info('Sending scheduled file message', {
@@ -188,13 +190,14 @@ class MessageService {
       }
 
       // Send text message
-      const apiEndpoint = `${payload.domain}/api/sendText`;
+      // Use apiEndpoint if provided, otherwise construct from domain
+      const apiEndpoint = payload.apiEndpoint || `${payload.domain}/api/sendText`;
       console.log(payload.content);
 
       // Build message payload for WhatsApp API
       const messagePayload = {
         chatId: payload.recipient,
-        message: payload.content,
+        text: payload.content,
         linkPreview: true,
         linkPreviewHighQuality: false,
         session: payload.sessionName,
