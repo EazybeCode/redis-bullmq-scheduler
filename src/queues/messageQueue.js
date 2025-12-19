@@ -6,8 +6,7 @@ const messageQueue = new Queue('scheduled-messages', {
   defaultJobOptions: {
     attempts: parseInt(process.env.MAX_JOB_ATTEMPTS) || 3,
     backoff: {
-      type: 'exponential',
-      delay: 2000,
+      type: 'custom',
     },
     removeOnComplete: {
       age: 3600, // Keep completed jobs for 1 hour
