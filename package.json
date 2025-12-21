@@ -2,8 +2,8 @@
   "name": "bullmq-scheduled-messages",
   "version": "1.0.0",
   "description": "Scheduled message system with BullMQ",
-   "main": "src/server.js",
-   "scripts": {
+  "main": "src/server.js",
+  "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "worker": "node src/workers/messageWorker.js",
@@ -18,11 +18,11 @@
     "bullmq": "^5.65.0",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
-    "ioredis": "^5.8.2"
+    "ioredis": "^5.8.2",
+    "mysql2": "^3.16.0",
+    "sequelize": "^6.37.7"
   },
   "devDependencies": {
     "nodemon": "^3.1.11"
   }
 }
-
-
