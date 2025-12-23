@@ -161,7 +161,7 @@ class  MessageService {
           chat_id: payload.recipient, // Support both field names
           scheduled_file: payload.scheduledFile,
           scheduled_file_name: payload.scheduledFileName,
-          text: payload.content || ''
+          message: payload.content || ''  // Changed from 'text' to 'message' to match sendFileMessage expectation
         };
 
         Logger.info('Sending scheduled file message', {
